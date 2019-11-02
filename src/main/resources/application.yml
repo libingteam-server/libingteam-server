@@ -1,18 +1,16 @@
-server:
-  port: 8080
-  #测试阶段先不使用
-  #servlet:
-  #  context-path: /checky
+spring:
+  profiles:
+    active: dev
 
-#Spring相关配置
-Spring:
+---
+#开发环境配置
+spring:
+  profiles: dev
   datasource:
-    #url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8
-    url: jdbc:log4jdbc:mysql://120.78.150.152:3306/checky?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
-    username: checky
-    password: asdfgh
-    #driver-class-name: com.mysql.jdbc.Driver
-    driver-class-name: net.sf.log4jdbc.DriverSpy
+    url: jdbc:mysql://127.0.0.1:3306/libingteam?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
     #连接池配置
     hikari:
       max-lifetime: 60000
@@ -28,10 +26,102 @@ Spring:
     database: 0
     password:
 
-#mybatis-plus配置
-mybatis-plus:
-  mapper-locations: classpath*:mapper/*Mapper.xml
-  type-aliases-package: com.whu.checky.domain
+mybatis:
+  typeAliasesPackage: com.whu.libingteam.*.entity
+  mapperLocations: classpath*:mapper/**/*.xml
+
+
+---
+#测试环境配置
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/libingteam?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #连接池配置
+    hikari:
+      max-lifetime: 60000
+      maximum-pool-size: 20
+      idle-timeout: 60000
+      connection-timeout: 60000
+      validation-timeout: 3000
+      LoginTimeout: 60000
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      timeout: 5000
+      database: 0
+      password:
+mybatis:
+  typeAliasesPackage: com.whu.libingteam.*.entity
+  mapperLocations: classpath*:mapper/**/*.xml
+
+
+---
+#生产环境配置
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/libingteam?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #连接池配置
+    hikari:
+      max-lifetime: 60000
+      maximum-pool-size: 20
+      idle-timeout: 60000
+      connection-timeout: 60000
+      validation-timeout: 3000
+      LoginTimeout: 60000
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      timeout: 5000
+      database: 0
+      password:
+
+mybatis:
+  typeAliasesPackage: com.whu.libingteam.*.entity
+  mapperLocations: classpath*:mapper/**/*.xml
+
+
+#server:
+#  port: 8080
+  #测试阶段先不使用
+  #servlet:
+  #  context-path: /checky
+
+##Spring相关配置
+#Spring:
+#  datasource:
+#    url: jdbc:mysql://127.0.0.1:3306/libingteam?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+##    url: jdbc:log4jdbc:mysql://120.78.150.152:3306/checky?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+#    username: root
+#    password: 123456
+#    driver-class-name: com.mysql.jdbc.Driver
+##    driver-class-name: net.sf.log4jdbc.DriverSpy
+#    #连接池配置
+#    hikari:
+#      max-lifetime: 60000
+#      maximum-pool-size: 20
+#      idle-timeout: 60000
+#      connection-timeout: 60000
+#      validation-timeout: 3000
+#      LoginTimeout: 60000
+#  redis:
+#    host: 127.0.0.1
+#    port: 6379
+#    timeout: 5000
+#    database: 0
+#    password:
+
+#mybatis配置
+#mybatis:
+#  typeAliasesPackage: com.whu.libingteam.*.entity
+#  mapperLocations: classpath*:mapper/**/*.xml
 
 #文件路径配置
 #xcloud:
