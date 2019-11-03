@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: test
 
 ---
 #开发环境配置
@@ -30,6 +30,10 @@ mybatis:
   typeAliasesPackage: com.whu.libingteam.*.entity
   mapperLocations: classpath*:mapper/**/*.xml
 
+logging:
+  level:
+    com.whu.libingteam.system.dao : debug
+    com.whu.libingteam.user.dao : debug
 
 ---
 #测试环境配置
@@ -58,6 +62,10 @@ mybatis:
   typeAliasesPackage: com.whu.libingteam.*.entity
   mapperLocations: classpath*:mapper/**/*.xml
 
+logging:
+  level:
+    com.whu.libingteam.system.dao : debug
+    com.whu.libingteam.user.dao : debug
 
 ---
 #生产环境配置
@@ -86,6 +94,7 @@ spring:
 mybatis:
   typeAliasesPackage: com.whu.libingteam.*.entity
   mapperLocations: classpath*:mapper/**/*.xml
+
 
 
 #server:
