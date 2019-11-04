@@ -12,7 +12,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 
-public class redisConfig {
+public class RedisConfig {
     /**
      * retemplate相关配置
      * @param factory
@@ -44,6 +44,8 @@ public class redisConfig {
         template.setHashKeySerializer(new StringRedisSerializer());
         template.setHashValueSerializer(jacksonSeial);
         template.afterPropertiesSet();
+
+        System.out.println();
 
         return template;
     }

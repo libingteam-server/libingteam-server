@@ -1,5 +1,6 @@
 package com.whu.libingteam.system.controller;
 
+import cc.eamon.open.permission.Limit;
 import cc.eamon.open.permission.annotation.Permission;
 import cc.eamon.open.permission.annotation.PermissionLimit;
 import cc.eamon.open.status.Status;
@@ -51,7 +52,7 @@ public class DirectionController extends StatusBaseController {
       method = RequestMethod.GET
   )
   @ResponseBody
-  @PermissionLimit
+  @PermissionLimit(limits = Limit. OPERATION_CREATE)
   public Status getDirectionSimpleMapList(@RequestParam(required = false, defaultValue = "0") Long page,
       @RequestParam(required = false, defaultValue = "10") Integer rows) throws Exception {
     return new Status(
