@@ -46,6 +46,8 @@ public class RedisConfig {
         template.afterPropertiesSet();
 
         System.out.println();
+        System.out.println();
+        System.out.println();
 
         return template;
     }
