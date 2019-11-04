@@ -13,7 +13,7 @@ import static springfox.documentation.service.ApiInfo.DEFAULT_CONTACT;
 
 @Configuration
 @EnableSwagger2
-public class swaggerConfig {
+public class SwaggerConfig {
 
     @Bean
     public Docket ProductApi() {
